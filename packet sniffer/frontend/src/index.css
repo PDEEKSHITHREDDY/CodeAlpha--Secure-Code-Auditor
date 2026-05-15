@@ -1,0 +1,66 @@
+body {
+  margin: 0;
+  background: #0f172a;
+  color: white;
+  font-family: Arial;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background: #020617;
+}
+
+button {
+  margin: 5px;
+  padding: 5px 10px;
+}
+
+.start { background: green; color: white; }
+.stop { background: red; color: white; }
+
+.status.on { color: #22c55e; }
+.status.off { color: red; }
+
+.stats {
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  background: #020617;
+}
+
+.main {
+  display: flex;
+  height: calc(100vh - 120px);
+}
+
+.table {
+  flex: 2;
+  overflow: auto;
+}
+
+.details {
+  flex: 1;
+  border-left: 1px solid #333;
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+  font-size: 12px;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  background: black;
+}
+
+tr:hover {
+  background: #1e293b;
+}
+
+.TCP { color: #22c55e; }
+.UDP { color: #3b82f6; }
+.ICMP { color: #eab308; }
