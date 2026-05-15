@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Reports</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <h2>Secure Auditor</h2>
+
+        <a href="/">Dashboard</a>
+
+        <a href="/upload">Upload File</a>
+
+        <a href="/results">Scan Results</a>
+
+        <a href="/reports">Reports</a>
+
+    </div>
+
+    <!-- MAIN -->
+
+    <div class="main">
+
+        <div class="topbar">
+
+            <div>
+
+                <h1>Security Reports</h1>
+
+                <p class="subtitle">
+                    Download generated vulnerability
+                    analysis reports.
+                </p>
+
+            </div>
+
+        </div>
+
+        {% if report %}
+
+        <div class="reports-container">
+
+            <!-- REPORT CARD -->
+
+            <div class="report-card">
+
+                <div class="report-icon">
+
+                    📄
+
+                </div>
+
+                <h2>JSON Report</h2>
+
+                <p>
+                    Download raw Bandit scan results
+                    in JSON format.
+                </p>
+
+                <a href="/download-report">
+
+                    <button>
+
+                        Download JSON
+
+                    </button>
+
+                </a>
+
+            </div>
+
+            <!-- PDF CARD -->
+
+            <div class="report-card">
+
+                <div class="report-icon">
+
+                    📑
+
+                </div>
+
+                <h2>PDF Report</h2>
+
+                <p>
+                    Download professional cybersecurity
+                    audit report in PDF format.
+                </p>
+
+                <a href="/download-pdf">
+
+                    <button>
+
+                        Download PDF
+
+                    </button>
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- SUMMARY -->
+
+        <div class="report-summary">
+
+            <h3>Generated Report Includes</h3>
+
+            <ul>
+
+                <li>Detected vulnerabilities</li>
+
+                <li>Severity classification</li>
+
+                <li>Affected line numbers</li>
+
+                <li>Risk descriptions</li>
+
+                <li>Security recommendations</li>
+
+                <li>Secure coding guidance</li>
+
+            </ul>
+
+        </div>
+
+        {% else %}
+
+        <div class="empty-box">
+
+            <h2>No Reports Available</h2>
+
+            <p>
+                Upload and scan a Python file
+                to generate security reports.
+            </p>
+
+        </div>
+
+        {% endif %}
+
+        <footer>
+
+             Secure Code Auditor |
+    Developed by Pinninti Deekshith Reddy
+
+
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

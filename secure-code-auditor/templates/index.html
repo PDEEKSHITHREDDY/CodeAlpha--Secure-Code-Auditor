@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Secure Code Auditor</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <h2>Secure Auditor</h2>
+
+        <a href="/">Dashboard</a>
+
+        <a href="/upload">Upload File</a>
+
+        <a href="/results">Scan Results</a>
+
+        <a href="/reports">Reports</a>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+
+    <div class="main">
+
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+
+            <div>
+
+                <h1>Secure Code Auditor</h1>
+
+                <p class="subtitle">
+                    Python Static Code Analysis &
+                    Vulnerability Detection Platform
+                </p>
+
+            </div>
+
+            <div class="score-box">
+
+                <h2>{{ score }}/100</h2>
+
+                <p>Security Score</p>
+
+            </div>
+
+        </div>
+
+        <!-- CYBER BANNER -->
+
+        <div class="cyber-banner">
+
+            <h2>Real-Time Python Security Scanner</h2>
+
+            <p>
+                Detect insecure coding practices,
+                identify vulnerabilities and generate
+                cybersecurity audit reports using Bandit.
+            </p>
+
+        </div>
+
+        <!-- STATS -->
+
+        <div class="stats">
+
+            <div class="stat-card">
+
+                <h2>{{ total }}</h2>
+
+                <p>Total Issues</p>
+
+            </div>
+
+            <div class="stat-card high-bg">
+
+                <h2>{{ high }}</h2>
+
+                <p>High Severity</p>
+
+            </div>
+
+            <div class="stat-card medium-bg">
+
+                <h2>{{ medium }}</h2>
+
+                <p>Medium Severity</p>
+
+            </div>
+
+            <div class="stat-card low-bg">
+
+                <h2>{{ low }}</h2>
+
+                <p>Low Severity</p>
+
+            </div>
+
+        </div>
+
+        <!-- FEATURE CARDS -->
+
+        <div class="dashboard">
+
+            <a href="/upload" class="card">
+
+                <h3>Scan Python Files</h3>
+
+                <p>
+                    Upload Python source code
+                    and perform static security analysis.
+                </p>
+
+            </a>
+
+            <a href="/results" class="card">
+
+                <h3>Analyze Vulnerabilities</h3>
+
+                <p>
+                    Review security risks,
+                    severity levels and affected lines.
+                </p>
+
+            </a>
+
+            <a href="/reports" class="card">
+
+                <h3>Generate Reports</h3>
+
+                <p>
+                    Download JSON and PDF
+                    vulnerability audit reports.
+                </p>
+
+            </a>
+
+        </div>
+
+        <!-- INFO SECTION -->
+
+        <div class="info-box">
+
+            <h3>Detected Vulnerability Categories</h3>
+
+            <ul>
+
+                <li>Hardcoded Password Detection</li>
+
+                <li>Command Injection Detection</li>
+
+                <li>Unsafe Subprocess Usage</li>
+
+                <li>Weak Cryptographic Algorithms</li>
+
+                <li>Dangerous Python Functions</li>
+
+                <li>Static Security Analysis</li>
+
+            </ul>
+
+        </div>
+
+        <!-- FOOTER -->
+
+        <footer>
+
+         Secure Code Auditor |
+         Developed by Pinninti Deekshith Reddy
+
+        </footer>
+    </div>
+
+</body>
+
+</html>

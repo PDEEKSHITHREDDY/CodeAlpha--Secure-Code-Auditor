@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Results</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <h2>Secure Auditor</h2>
+
+    <a href="/">Dashboard</a>
+    <a href="/upload">Upload File</a>
+    <a href="/results">Results</a>
+    <a href="/reports">Reports</a>
+
+</div>
+
+<div class="main">
+
+    <div class="topbar">
+
+        <h1>Security Scan Results</h1>
+
+        <div class="score-box">
+
+            <h2>{{ score }}/100</h2>
+            <p>Security Score</p>
+
+        </div>
+
+    </div>
+
+    {% if report %}
+
+    <div class="scan-info">
+
+        <p>
+            <strong>Scanned File:</strong>
+            {{ report.filename }}
+        </p>
+
+        <p>
+            <strong>Scan Time:</strong>
+            {{ report.scan_time }}
+        </p>
+
+    </div>
+
+    <div class="stats">
+
+        <div class="stat-card">
+            <h2>{{ total }}</h2>
+            <p>Total Issues</p>
+        </div>
+
+        <div class="stat-card high-bg">
+            <h2>{{ high }}</h2>
+            <p>High</p>
+        </div>
+
+        <div class="stat-card medium-bg">
+            <h2>{{ medium }}</h2>
+            <p>Medium</p>
+        </div>
+
+        <div class="stat-card low-bg">
+            <h2>{{ low }}</h2>
+            <p>Low</p>
+        </div>
+
+    </div>
+
+    <table>
+
+        <tr>
+            <th>Issue</th>
+            <th>Severity</th>
+            <th>Line</th>
+            <th>Description</th>
+            <th>Recommendation</th>
+        </tr>
+
+        {% for issue in report.results %}
+
+        <tr>
+
+            <td>{{ issue.test_name }}</td>
+
+            <td>
+                <span class="{{ issue.issue_severity.lower() }}">
+                    {{ issue.issue_severity }}
+                </span>
+            </td>
+
+            <td>{{ issue.line_number }}</td>
+
+            <td>{{ issue.issue_text }}</td>
+
+            <td>
+
+                {% if issue.issue_severity == "HIGH" %}
+
+                Remove unsafe execution methods and sanitize inputs immediately.
+
+                {% elif issue.issue_severity == "MEDIUM" %}
+
+                Follow secure coding standards and improve validation.
+
+                {% else %}
+
+                Review the code for better security practices.
+
+                {% endif %}
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    {% else %}
+
+    <div class="empty-box">
+
+        <h2>No Scan Reports Available</h2>
+
+        <p>
+            Upload and scan a Python file
+            to view vulnerability analysis.
+        </p>
+
+    </div>
+
+    {% endif %}
+
+    <footer>
+
+         Secure Code Auditor |
+    Developed by Pinninti Deekshith Reddy
+
+    </footer>
+
+</div>
+
+</body>
+</html>

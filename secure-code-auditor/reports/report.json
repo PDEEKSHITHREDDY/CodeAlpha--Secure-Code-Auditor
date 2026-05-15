@@ -1,0 +1,176 @@
+{
+    "errors": [],
+    "generated_at": "2026-05-15T08:51:36Z",
+    "metrics": {
+        ".\\uploads\\test_vulnerable.py": {
+            "CONFIDENCE.HIGH": 6,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.UNDEFINED": 0,
+            "SEVERITY.HIGH": 3,
+            "SEVERITY.LOW": 3,
+            "SEVERITY.MEDIUM": 1,
+            "SEVERITY.UNDEFINED": 0,
+            "loc": 15,
+            "nosec": 0,
+            "skipped_tests": 0
+        },
+        "_totals": {
+            "CONFIDENCE.HIGH": 6,
+            "CONFIDENCE.LOW": 0,
+            "CONFIDENCE.MEDIUM": 1,
+            "CONFIDENCE.UNDEFINED": 0,
+            "SEVERITY.HIGH": 3,
+            "SEVERITY.LOW": 3,
+            "SEVERITY.MEDIUM": 1,
+            "SEVERITY.UNDEFINED": 0,
+            "loc": 15,
+            "nosec": 0,
+            "skipped_tests": 0
+        }
+    },
+    "results": [
+        {
+            "code": "1 import subprocess\n2 import hashlib\n3 import pickle\n",
+            "col_offset": 0,
+            "end_col_offset": 17,
+            "filename": ".\\uploads\\test_vulnerable.py",
+            "issue_confidence": "HIGH",
+            "issue_cwe": {
+                "id": 78,
+                "link": "https://cwe.mitre.org/data/definitions/78.html"
+            },
+            "issue_severity": "LOW",
+            "issue_text": "Consider possible security implications associated with the subprocess module.",
+            "line_number": 1,
+            "line_range": [
+                1
+            ],
+            "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess",
+            "test_id": "B404",
+            "test_name": "blacklist"
+        },
+        {
+            "code": "2 import hashlib\n3 import pickle\n4 import os\n",
+            "col_offset": 0,
+            "end_col_offset": 13,
+            "filename": ".\\uploads\\test_vulnerable.py",
+            "issue_confidence": "HIGH",
+            "issue_cwe": {
+                "id": 502,
+                "link": "https://cwe.mitre.org/data/definitions/502.html"
+            },
+            "issue_severity": "LOW",
+            "issue_text": "Consider possible security implications associated with pickle module.",
+            "line_number": 3,
+            "line_range": [
+                3
+            ],
+            "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b403-import-pickle",
+            "test_id": "B403",
+            "test_name": "blacklist"
+        },
+        {
+            "code": "6 # Hardcoded password\n7 password = \"admin123\"\n8 \n",
+            "col_offset": 11,
+            "end_col_offset": 21,
+            "filename": ".\\uploads\\test_vulnerable.py",
+            "issue_confidence": "MEDIUM",
+            "issue_cwe": {
+                "id": 259,
+                "link": "https://cwe.mitre.org/data/definitions/259.html"
+            },
+            "issue_severity": "LOW",
+            "issue_text": "Possible hardcoded password: 'admin123'",
+            "line_number": 7,
+            "line_range": [
+                7
+            ],
+            "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b105_hardcoded_password_string.html",
+            "test_id": "B105",
+            "test_name": "hardcoded_password_string"
+        },
+        {
+            "code": "10 data = \"secret_data\"\n11 hash_value = hashlib.md5(data.encode()).hexdigest()\n12 \n",
+            "col_offset": 13,
+            "end_col_offset": 39,
+            "filename": ".\\uploads\\test_vulnerable.py",
+            "issue_confidence": "HIGH",
+            "issue_cwe": {
+                "id": 327,
+                "link": "https://cwe.mitre.org/data/definitions/327.html"
+            },
+            "issue_severity": "HIGH",
+            "issue_text": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+            "line_number": 11,
+            "line_range": [
+                11
+            ],
+            "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b324_hashlib.html",
+            "test_id": "B324",
+            "test_name": "hashlib"
+        },
+        {
+            "code": "14 command = input(\"Enter command: \")\n15 subprocess.call(command, shell=True)\n16 \n",
+            "col_offset": 0,
+            "end_col_offset": 36,
+            "filename": ".\\uploads\\test_vulnerable.py",
+            "issue_confidence": "HIGH",
+            "issue_cwe": {
+                "id": 78,
+                "link": "https://cwe.mitre.org/data/definitions/78.html"
+            },
+            "issue_severity": "HIGH",
+            "issue_text": "subprocess call with shell=True identified, security issue.",
+            "line_number": 15,
+            "line_range": [
+                15
+            ],
+            "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b602_subprocess_popen_with_shell_equals_true.html",
+            "test_id": "B602",
+            "test_name": "subprocess_popen_with_shell_equals_true"
+        },
+        {
+            "code": "20 with open(pickle_data, \"rb\") as file:\n21     obj = pickle.load(file)\n22 \n",
+            "col_offset": 10,
+            "end_col_offset": 27,
+            "filename": ".\\uploads\\test_vulnerable.py",
+            "issue_confidence": "HIGH",
+            "issue_cwe": {
+                "id": 502,
+                "link": "https://cwe.mitre.org/data/definitions/502.html"
+            },
+            "issue_severity": "MEDIUM",
+            "issue_text": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+            "line_number": 21,
+            "line_range": [
+                21
+            ],
+            "more_info": "https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b301-pickle",
+            "test_id": "B301",
+            "test_name": "blacklist"
+        },
+        {
+            "code": "24 user_input = input(\"Enter system command: \")\n25 os.system(user_input)\n26 \n",
+            "col_offset": 0,
+            "end_col_offset": 21,
+            "filename": ".\\uploads\\test_vulnerable.py",
+            "issue_confidence": "HIGH",
+            "issue_cwe": {
+                "id": 78,
+                "link": "https://cwe.mitre.org/data/definitions/78.html"
+            },
+            "issue_severity": "HIGH",
+            "issue_text": "Starting a process with a shell, possible injection detected, security issue.",
+            "line_number": 25,
+            "line_range": [
+                25
+            ],
+            "more_info": "https://bandit.readthedocs.io/en/1.9.4/plugins/b605_start_process_with_a_shell.html",
+            "test_id": "B605",
+            "test_name": "start_process_with_a_shell"
+        }
+    ],
+    "scan_time": "2026-05-15 14:21:36.549104",
+    "filename": "test_vulnerable.py"
+}

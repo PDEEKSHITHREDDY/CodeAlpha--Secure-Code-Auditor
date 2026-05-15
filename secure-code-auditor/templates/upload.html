@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Upload File</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <h2>Secure Auditor</h2>
+
+        <a href="/">Dashboard</a>
+
+        <a href="/upload">Upload File</a>
+
+        <a href="/results">Scan Results</a>
+
+        <a href="/reports">Reports</a>
+
+    </div>
+
+    <!-- MAIN -->
+
+    <div class="main">
+
+        <div class="topbar">
+
+            <div>
+
+                <h1>Upload Python File</h1>
+
+                <p class="subtitle">
+                    Upload a Python source file for
+                    static security analysis.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- UPLOAD CONTAINER -->
+
+        <div class="upload-container">
+
+            <div class="upload-card">
+
+                <div class="upload-icon">
+
+                    🛡️
+
+                </div>
+
+                <h2>Secure File Upload</h2>
+
+                <p>
+                    Supported file type:
+                    <strong>.py</strong>
+                </p>
+
+                {% if error %}
+
+                <div class="error-box">
+
+                    {{ error }}
+
+                </div>
+
+                {% endif %}
+
+                <form method="POST"
+                    enctype="multipart/form-data">
+
+                    <div class="file-upload">
+
+                        <input type="file"
+                            name="file"
+                            required>
+
+                    </div>
+
+                    <button type="submit">
+
+                        Scan Python File
+
+                    </button>
+
+                </form>
+
+            </div>
+
+            <!-- INFO CARD -->
+
+            <div class="upload-info">
+
+                <h3>Security Scanner Features</h3>
+
+                <ul>
+
+                    <li>Detect hardcoded passwords</li>
+
+                    <li>Detect command injection</li>
+
+                    <li>Unsafe subprocess detection</li>
+
+                    <li>Weak hashing detection</li>
+
+                    <li>Dangerous function analysis</li>
+
+                    <li>PDF & JSON report generation</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <footer>
+
+             Secure Code Auditor |
+           Developed by Pinninti Deekshith Reddy
+
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
